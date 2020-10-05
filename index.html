@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kansas Water Map</title>
+    <meta charset="utf-8">
+    <!-- Support for browsers on mobile phones. -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- Google Web Fonts. -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed'
+          rel='stylesheet' type='text/css'>
+    <!-- Custom CSS styles for our application. -->
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- The Google JavaScript loader tool (for the Maps, Charts APIs). -->
+    <script src="https://www.google.com/jsapi"></script>
+    <!-- D3 Legend -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.12.2/d3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.4/d3-legend.js"></script>
+    <!-- shpwrite interface -->
+    <script src="https://unpkg.com/shp-write@latest/shpwrite.js"></script>
+    <script src="/static/lz-string.js"></script>
+    <!-- Our custom JavaScript for Trendy Lights. -->
+    <script src="/static/script.js"></script>
+  </head>
+  <body onload="
+    susie.setLegend(
+        title='Surface water in most recent Landsat image',
+        svgId='#legendSvgLastScene', 
+        domain=[0.01, 1],
+        labels=['wet',''],
+        cells=[1,0.01],
+        startColor='rgba(255, 255, 255, 0.98)',
+        endColor='rgba(8, 29, 88, 0.98)'
+    );
+    susie.setLegend(
+        title='Historic surface water frequency (1986 - 2012)',
+        svgId='#legendSvgHistorical',
+        domain=[0.20, 1],
+        labels=['0.02','0.04','0.06','0.08','0.1','0.2','0.3','0.4','0.5','0.6','1'],
+        cells=[0.20,0.25,0.30,0.35,0.40,0.45,0.50,0.60,0.70,0.80,1.0],
+        startColor='rgba(237, 248, 177, 0.98)',
+        endColor='rgba(8, 29, 88, 0.98)'
+    );">
+    <!-- The DOM of our application. -->
+    <div class="kwap">
+      <!-- A container which the Maps API will populate with a map. -->
+      <div class="map"></div>
+      <div id="acquisitionDate"></div>
+      <div class="myLocationControl" id="myLocationControl" onclick="javascript:kwap.App.addLocationMarker()"></div>
+      <div class="geocoderSearchbox" id="geocoderSearchbox"></div>
+      <div class="geocoderControl" id="geocoderControl" onclick="javascript:kwap.App.toggleGeocoder(id='geocoderSearchbox', click_event=event)"></div>
+      <div class="infoboxControl" id="infoboxControl" onclick="javascript:kwap.App.toggleInfobox()"></div>
+      <!-- contextmenu contents -->
+      <div class="menu">
+        <!-- <div class="menu-item" onclick="javascript:menu.export_features();">Export Features (Spreadsheet)</div> -->
+        <div class="menu-item" onclick="javascript:menu.remove_all_features();">Remove All Features</div>
+        <hr>
+        <div class="menu-item" onclick="javascript:menu.toggle_search(event);">Search By Location</div>
+        <hr>
+        <div class="menu-item" onclick="javascript:menu.toggle_help();">Toggle Help</div>
+        <div class="menu-item" onclick="javascript:menu.toggle_legend();">Toggle Legend</div>
+      </div>
+      <!-- A pop-out messaging system for user i/o -->
+      <div class="instructions" id="instructionsPopout">
+        <div class="header-top"></div>
+        <div class="scroll-box"></div>
+        <div class="bottom-buttons"></div>
+      </div>
+      <!-- A map legend pop-out -->
+      <div class="legend" id="legendPopout">
+        <div class="legend header">
+          <div class="legend header title" id="legendHeader"><h3>Legend</h3></div>
+          <div class="legend header close"></div>
+        </div>
+        <div class="legend body" id="legendBody">
+          <div class="legend body layerToggle">
+            <label class="switch">
+              <input type="checkbox" checked="checked" id="most_recent_checkbox"
+                     onchange="javascript:susie.toggleEeLayerById('most_recent_checkbox')">
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="legend body layerEntry">
+            <svg id="legendSvgLastScene"></svg>
+          </div>
+          <div class="legend body layerToggle">
+            <br>
+              <label class="switch">
+                <input type="checkbox"
+                       checked="checked" id="historical_checkbox"
+                       onchange="javascript:susie.toggleEeLayerById('historical_checkbox')">
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="legend body layerEntry">
+            <svg id="legendSvgHistorical"></svg>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <!-- Boot our JavaScript once the body has loaded. -->
+    <script>
+    // boot our map interface through kwap
+      kwap.boot(
+          '{{ historicalEeMapId | safe }}',
+          '{{ mostRecentEeMapId | safe }}',
+          '{{ historicalEeToken | safe }}',
+          '{{ mostRecentEeToken | safe }}');
+    </script>
+  </body>
+</html>

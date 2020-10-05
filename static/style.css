@@ -1,0 +1,608 @@
+/** User interface styles for the Trendy Lights app. */
+
+.template {
+  display: none;
+}
+
+/* Shared across all screen sizes. */
+
+.kwap h1 {
+  font-family: 'Roboto Condensed', sans-serif;
+  position: absolute;
+  z-index: 1;
+  margin: 0px;
+  color: white;
+  text-shadow: 0px 0px 20px black;
+}
+
+
+html,
+body,
+.kwap,
+.kwap .map {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+}
+
+.kwap .panel {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+  box-shadow: 0px 0px 20px black;
+  font-family: 'Roboto', sans-serif;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.kwap .panel h2 {
+  margin: 0px;
+  padding-bottom: 10px;
+}
+
+.kwap .panel .details {
+  overflow: hidden;
+  max-height: 500px;
+}
+
+.kwap .panel .error {
+  display: none;
+}
+
+.kwap .powered-by-ee {
+  position: absolute;
+  z-index: 1;
+  bottom: 10px;
+  left: 50%;
+  margin-left: -150px;
+  width: 300px;
+}
+
+@media screen and (orientation:landscape) {
+  .instructions {
+      position: absolute;
+      top:-5px;
+      right: 0;
+      padding: 10px;
+      margin: 10px;
+      background-color: white;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+      font-family: 'Roboto', sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      width: 25%;
+      min-width: 340px;
+      max-width: 440px;
+      height: 560px;
+      min-height: 500px;
+      max-height: 580px;
+      z-index: 999;
+    }
+}
+@media screen and (orientation:portrait) {
+  .instructions {
+      position: absolute;
+      top:-5px;
+      right: 0;
+      padding: 10px;
+      margin: 10px;
+      background-color: white;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+      font-family: 'Roboto', sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      width: 90%;
+      min-width: 340px;
+      max-width: 440px;
+      height: 350px;
+      min-height: 30px;
+      max-height: 450px;
+      z-index: 999;
+    }
+
+}
+.instructions a {
+  color: #ff7204;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.instructions h3 {
+  padding: 5px;
+  margin: 1px;
+}
+
+.instructions button{
+    margin: 1px;
+    font-weight: 300;
+    font-size: 13px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.instructions ol li {
+  line-height: 1.4rem;
+  padding-bottom: 0.4rem;
+}
+@media screen and (orientation:portrait) {
+  .instructions .scroll-box {
+      height: 250px;
+      min-height: 20px;
+      max-height: 260px;
+      overflow-y: auto;
+      margin-left: 0px;
+      margin-right: 4px;
+      margin-top: 10px;
+      margin-bottom: 0px;
+  }
+}
+@media screen and (orientation:landscape) {
+  .instructions .scroll-box {
+      height: 480px;
+      min-height: 20px;
+      max-height: 490px;
+      overflow-y: auto;
+      margin-top: 10px;
+      margin-left: 0px;
+      margin-right: 4px;
+      margin-bottom: 0px;
+  }
+}
+.instructions .header-top {
+    height: 5.5%;
+    min-height: 30px;
+    max-height: 50px;
+    min-width: 200px;
+    vertical-align: top;
+}
+@media screen and (orientation:portrait) {
+  .instructions .bottom-buttons {
+      height: 20px;
+      min-height: 10px;
+      max-height: 35px;
+      min-width: 185px;
+      vertical-align: bottom;
+      margin-top: 30px;
+  }
+}
+@media screen and (orientation:landscape) {
+  .instructions .bottom-buttons {
+      height: 20px;
+      min-height: 10px;
+      max-height: 35px;
+      min-width: 185px;
+      vertical-align: bottom;
+      margin-top: 11px;
+  }
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 17px;
+  top: 30%;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #34548F;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #34548F;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+}
+
+/* go to my location control ui */
+.myLocationControl {
+      position: absolute;
+      border-radius: 2px;
+      display: block;
+      border: 0px none;
+      bottom: 115px;
+      right: 0px;
+      padding: 0px;
+      margin: 10px;
+      background-color: white;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      font-family: 'Roboto', Arial, sans-serif;
+      width: 28px;
+      height: 28px;
+      max-width: 28px;
+      max-height: 28px;
+      background-image: url('my_location_black_192x192.png');
+      background-size: contain;
+}
+/* geocoder control ui */
+.geocoderControl {
+  position: absolute;
+  border-radius: 2px;
+  display: block;
+  border: 0px none;
+  bottom: 151px;
+  right: 0px;
+  padding: 0px;
+  margin: 10px;
+  background-color: white;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  font-family: 'Roboto', Arial, sans-serif;
+  width: 28px;
+  height: 28px;
+  max-width: 28px;
+  max-height: 28px;
+  background-image: url('magnifying_glass_512x512.png');
+  background-size: contain;
+}
+.geocoderSearchbox {
+  position: fixed;
+  display: none;
+  right: 0px;
+  padding: 5px;
+  margin: 0;
+  vertical-align: middle;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  width: 350px;
+  height: 40px;
+  min-width: 200px;
+  max-width: 350px;
+  min-height: 30px;
+  max-height: 40px;
+  background-color: #FFFFFF;
+  opacity: 0.98;
+  box-shadow: 3px 3px 5px #888888;
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
+  border-radius: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  z-index: 999;
+}
+
+/* infobox button control ui */
+.infoboxControl {
+      position: absolute;
+      border-radius: 2px;
+      display: block;
+      border: 0px none;
+      bottom: 187px;
+      right: 0px;
+      padding: 0px;
+      margin: 10px;
+      background-color: white;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      font-family: 'Roboto', Arial, sans-serif;
+      width: 28px;
+      height: 28px;
+      max-width: 28px;
+      max-height: 28px;
+      background-image: url('info_icon_2.png');
+      background-size: contain;
+}
+/* Rounded sliders */
+.slider.round {
+  border-radius: 17px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Portrait */
+@media screen and (orientation:portrait) {
+  .legend {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+    margin: 10px;
+    background-color: white;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    height: 24%;
+    min-height: 190px;
+    max-height: 300px;
+    width: 75%;
+    min-width: 290px;
+    max-width: 350px;
+  }
+}
+
+@media screen and (orientation:landscape) {
+  .legend {
+    position: absolute;
+    bottom:0;
+    left: 0;
+    padding: 10px;
+    margin: 10px;
+    background-color: white;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    height: 30%;
+    min-height: 190px;
+    max-height: 200px;
+    width: 75%;
+    min-width: 330px;
+    max-width: 400px;
+  }
+}
+
+.legend a {
+  color: #ff7204;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.legend ol li {
+  line-height: 1.4rem;
+  padding-bottom: 0.4rem;
+}
+
+.legend h3 {
+  padding: 2px;
+  margin: 2px;
+}
+
+@media screen and (orientation:portrait) {
+  .legend svg {
+    position: relative;
+    float: right;
+    top: 0px;
+    left: -15px;
+    max-height: 100%;
+    max-width: 95%;
+  }
+}
+@media screen and (orientation:landscape) {
+  .legend svg {
+    position: relative;
+    float: right;
+    top: 0px;
+    left: -28px;
+    min-width: 95%;
+    max-height: 100%;
+    max-width: 98%;
+  }
+}
+
+.legend .header {
+  position: relative;
+  box-shadow: none;
+  height: 15%;
+  min-height: 0px;
+  max-height: 25%;
+  min-width: 0px;
+  max-width: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+
+.legend .header .title {
+  position: relative;
+  float: left;
+  width: 70%;
+  height: 100%;
+}
+
+.legend .header .close {
+  position: relative;
+  float: right;
+  text-align: right;
+  display: inline-block;
+  width: 30%;
+  height: 100%;
+}
+
+.legend .body {
+  position: relative;
+  box-shadow: none;
+  height: 85%;
+  width: 100%;
+  min-height: 0px;
+  min-width: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+@media screen and (orientation:portrait) {
+  .legend .body .layerToggle {
+    position: relative;
+    text-align: center;
+    float: left;
+    top: 10px;
+    display: inline-block;
+    min-width: 1%;
+    width: 11%;
+    max-width: 12%;
+    height: 45%;
+    min-height: 65px;
+  }
+  .legend .body .layerEntry {
+    position: relative;
+    float: right;
+    height: 45%;
+    min-height: 65px;
+    width: 89%;
+    min-width: 89%;
+  }
+}
+@media screen and (orientation:landscape) {
+  .legend .body .layerToggle {
+    position: relative;
+    text-align: center;
+    float: left;
+    top: 10px;
+    display: inline-block;
+    min-width: 15%;
+    width: 15%;
+    height: 40%;
+  }
+  .legend .body .layerEntry {
+    position: relative;
+    float: right;
+    height: 49%;
+    width: 85%;
+    min-width: 85%;
+  }
+}
+
+/* Small screens. */
+
+@media (max-width: 600px) {
+    font-size: 9px;
+  }
+
+  .kwap h1 {
+    top: 22px;
+    font-size: 37px;
+    left: 30px;
+  }
+
+  .kwap .panel {
+    width: 100%;
+    bottom: 0px;
+    height: 50px;
+  }
+
+  .kwap .panel .details {
+    visibility: hidden;
+    max-height: 400px;
+    padding-right: 10px;
+  }
+
+  .kwap .panel .close {
+    display: none;
+  }
+
+  .kwap .panel .toggler {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+
+  .kwap .panel.expanded .details  {
+    visibility: visible;
+  }
+
+  .kwap .panel.expanded {
+    height: 278px;
+  }
+
+  .kwap .powered-by-ee {
+    width: 180px;
+  }
+
+  .instructions {
+    font-weight: 300;
+    font-size: 13px;
+  }
+}
+
+/* Large screens. */
+
+@media (min-width: 900px) {
+  .kwap h1 {
+    left: 40px;
+    top: 30px;
+    font-size: 56px;
+    opacity: .98;
+  }
+
+  .kwap .panel {
+    width: 400px;
+    left: 40px;
+    top: 126px;
+    padding: 14px;
+    opacity: .98;
+    border-radius: 4px;
+  }
+
+  .kwap .panel .close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    cursor: pointer;
+  }
+
+  .kwap .panel .toggler {
+    display: none;
+  }
+
+  .instructions {
+    font-weight: 300;
+    font-size: 13px;
+  }
+}
+
+.menu
+{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    width: 180px;
+    background-color: #FFFFFF;
+    opacity: 0.98;
+    box-shadow: 3px 3px 5px #888888;
+    border-style: solid;
+    border-width: 1px;
+    border-color: grey;
+    border-radius: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    position: fixed;
+    display: none;
+}
+
+.menu-item
+{
+    height: 20px;
+}
+
+.menu-item:hover
+{
+    background-color: #6CB5FF;
+    cursor: pointer;
+}

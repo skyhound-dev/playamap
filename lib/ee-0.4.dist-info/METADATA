@@ -1,0 +1,15 @@
+Metadata-Version: 2.0
+Name: ee
+Version: 0.4
+Summary: A wrapper for dd
+Home-page: https://github.com/snare/ee
+Author: snare
+Author-email: snare@ho.ax
+License: Buy snare a beer
+Keywords: dd wrapper
+Platform: UNKNOWN
+Requires-Dist: blessed
+
+UNKNOWN
+
+
