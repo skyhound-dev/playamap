@@ -8,6 +8,7 @@ pyasn1_modules
 rsa
 *f2.json
 *.com
+*.class
 *.dll
 *.exe
 *.o
