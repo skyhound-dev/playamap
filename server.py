@@ -65,6 +65,7 @@ import math
 
 import config
 import ee
+print(ee.__version__)
 import jinja2
 import webapp2
 
