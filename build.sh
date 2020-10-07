@@ -39,8 +39,8 @@ BuildDep () {
 
 # Build oauth2client v2.2.0 dependencies.
 BuildDep six 1.10.0 six.py
-#pip install -t ./lib earthengine-api --upgrade
-BuildDep earthengine-api 0.1.237 ee
+# Installing ee into lib 
+pip install -t ./lib earthengine-api --upgrade
 BuildDep pyasn1 0.1.9 pyasn1
 BuildDep pyasn1-modules 0.0.8 pyasn1_modules
 BuildDep rsa 3.4.2 rsa
